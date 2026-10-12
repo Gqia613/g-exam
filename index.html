@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>G検定 模擬試験 一問一答</title>
+  <meta name="description" content="G検定 模擬試験（全191問）を10問ずつ一問一答形式で解けるドリル">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="bg__glow bg__glow--1"></div>
+    <div class="bg__glow bg__glow--2"></div>
+    <div class="bg__grid"></div>
+  </div>
+
+  <!-- ホーム -->
+  <main id="home" class="view is-active">
+    <header class="hero">
+      <p class="hero__eyebrow">MOCK EXAM · 191 QUESTIONS</p>
+      <h1 class="hero__title">G検定 模擬試験<span>一問一答</span></h1>
+      <div class="hero__stats">
+        <div class="stat"><span class="stat__num" id="stat-done">0</span><span class="stat__label">回答済み</span></div>
+        <div class="stat"><span class="stat__num" id="stat-correct">0</span><span class="stat__label">正解</span></div>
+        <div class="stat"><span class="stat__num" id="stat-rate">-</span><span class="stat__label">正答率</span></div>
+      </div>
+      <div class="overall"><div class="overall__bar" id="overall-bar"></div></div>
+    </header>
+
+    <section>
+      <div class="section-head">
+        <h2>10問ずつ挑戦する</h2>
+        <button class="btn btn--ghost btn--sm" id="reset-btn" type="button">記録をリセット</button>
+      </div>
+      <div class="sets" id="sets"></div>
+    </section>
+
+    <footer class="foot">キーボード：<kbd>1</kbd>〜<kbd>4</kbd> 選択 ／ <kbd>Enter</kbd> 回答・次へ ／ <kbd>Esc</kbd> 一覧へ</footer>
+  </main>
+
+  <!-- クイズ -->
+  <main id="quiz" class="view">
+    <div class="topbar">
+      <button class="icon-btn" id="back-btn" type="button" aria-label="一覧へ戻る">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="topbar__info">
+        <span class="topbar__set" id="set-label"></span>
+        <span class="topbar__count" id="count-label"></span>
+      </div>
+      <div class="topbar__score" id="live-score"></div>
+    </div>
+    <div class="progress"><div class="progress__bar" id="progress-bar"></div></div>
+
+    <article class="card" id="card">
+      <div class="card__head">
+        <span class="qno" id="qno"></span>
+        <button class="toggle" id="q-toggle" type="button"></button>
+      </div>
+      <div class="stem" id="stem"></div>
+      <figure class="orig" id="q-orig" hidden><img id="q-img" alt="" loading="lazy"></figure>
+      <ol class="options" id="options"></ol>
+
+      <div class="actions">
+        <button class="btn btn--primary" id="answer-btn" type="button" disabled>回答する</button>
+      </div>
+
+      <section class="result" id="result" hidden>
+        <div class="verdict" id="verdict"></div>
+        <div class="expl-head">
+          <h3>解説</h3>
+          <button class="toggle" id="a-toggle" type="button"></button>
+        </div>
+        <div class="expl" id="expl"></div>
+        <figure class="orig" id="a-orig" hidden></figure>
+        <div class="actions">
+          <button class="btn btn--primary" id="next-btn" type="button">次の問題へ</button>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <!-- 結果 -->
+  <main id="summary" class="view">
+    <div class="summary">
+      <p class="hero__eyebrow" id="sum-set"></p>
+      <div class="ring">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" class="ring__track"/>
+          <circle cx="60" cy="60" r="52" class="ring__value" id="ring-value"/>
+        </svg>
+        <div class="ring__text"><span id="sum-score"></span><small id="sum-total"></small></div>
+      </div>
+      <p class="sum-msg" id="sum-msg"></p>
+      <ul class="sum-list" id="sum-list"></ul>
+      <div class="sum-actions">
+        <button class="btn btn--ghost" id="retry-wrong-btn" type="button">間違えた問題だけ解き直す</button>
+        <button class="btn btn--ghost" id="retry-btn" type="button">もう一度</button>
+        <button class="btn btn--primary" id="next-set-btn" type="button">次の10問へ</button>
+        <button class="btn btn--ghost" id="home-btn" type="button">一覧へ戻る</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
